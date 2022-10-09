@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <link href="styles/styles.css" rel="stylesheet" />
+    <link href="styles/preloaders.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div id="app" class="flex">
+        <section>
+            <h2>Tareas en progreso:</h2>
+            
+            <br />
+
+            <ul>
+                <li v-for="tarea in tareas.filter(i => !i.complete)" :key="tarea.id">
+                    <label>{{ tarea.name }}<input type="checkbox" v-model="tarea.complete"></label> 
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Tareas terminadas:</h2>
+            
+            <br />
+            <ul>
+                <li v-for="tarea in tareas.filter(i => i.complete)" :key="tarea.id">
+                    <label>{{ tarea.name }}<input type="checkbox" v-model="tarea.complete"></label> 
+                </li>
+            </ul>
+        </section>
+
+        <p class="alert" v-show="tareas.filter(i => !i.complete).length">Hay tareas pendientes!</p>
+
+        <p class="alert" v-if="completedTasks.length">Hay tareas completadas!</p>
+    </div>
+
+
+    <script>
+        let app = {
+            data() {
+                return {
+                    tareas: [
+                        {
+                            id: 1,
+                            name: "Create a new app",
+                            complete: true,
+                        },
+                        {
+                            id: 2,
+                            name: "Learn PHP",
+                            complete: true,
+                        },
+                        {
+                            id: 3,
+                            name: "Learn Laravel",
+                            complete: true,
+                        },
+                        {
+                            id: 4,
+                            name: "Learn Vue",
+                            complete: false,
+                        },
+                        {
+                            id: 5,
+                            name: "Learn Inertia",
+                            complete: false,
+                        },
+                    ]
+                }
+            },
+
+            computed: {
+                completedTasks()
+                {
+                    return this.tareas.filter(tarea => tarea.complete)
+                }
+            }
+        };
+
+        Vue.createApp(app).mount("#app")
+    </script>
+</body>
+</html>

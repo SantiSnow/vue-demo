@@ -1,0 +1,43 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.flex {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5rem;
+}
+
+.alert {
+    font-weight: 600;
+
+}
+
+.btn{
+    color: white;
+    padding: 1rem 3rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:disabled{
+    cursor: not-allowed;
+    color: rgba(189, 189, 189, 0.205);
+}
+
+.btn.primary
+{
+    background-color: rgb(32, 136, 23);
+}
+
+.btn.secondary
+{
+    background-color: rgb(25, 100, 212);
+}
+
+.btn.warning
+{
+    background-color: rgb(233, 236, 51);
+}
